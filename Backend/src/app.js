@@ -13,9 +13,11 @@ const database = require('./config/db.config.js'); // conexão local com o banco
 mongoose.Promise = global.Promise;
 
 // conexão da base de dados
-mongoose.connect(database.local.localDataBaseUri, {
+mongoose.connect(database.local.localUrlDataBse, {
     UserNewUrlParser: true,
-    useUnifieldTopology: true}).then(() => {
+    useUnifieldTopology: true,
+    useCreateIndex: true,
+}).then(() => {
     console.log('Database is connected');
 }).catch(err => {
     console.log('Database connection error: ' + err);
@@ -25,6 +27,7 @@ mongoose.connect(database.local.localDataBaseUri, {
 
 // Rotas da API:
 const index = require('./routes/index');
+const userRoutes = require('./routes/user.routes');
 
 // Declarar rotas user.routes.js
 
@@ -35,7 +38,7 @@ app.use(cors());
 app.use(morgan('dev'));
 
 app.use(index);
-
+app.use('api/v1', userRoutes);
 // incluir depois a chamada da rota 'user.routes.js'
 
 module.exports = app;
