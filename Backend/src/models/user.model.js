@@ -7,10 +7,10 @@ const jwt = require('jsonwebtoken');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    name: { type: String, maxlength: 50, required: false },
-    email: { type: String, maxlength: 30, required: false },
-    password: { type: String, required: false },
-    tokens: [{token: { type: String, required: false },},],
+    name: { type: String, maxlength: 50, required: true },
+    email: { type: String, maxlength: 30, required: true },
+    password: { type: String, required: true },
+    tokens: [{token: { type: String, required: true },},],
     },
     {
         timestamps: true,
@@ -27,10 +27,10 @@ userSchema.pre('save', async function(next) {
     next();
 });
 
-userSchema.method.generateAuthToken = async function() {
+userSchema.methods.generateAuthToken = async function() {
     const user = this;
     const token = jwt.sign({ _id: user._id, name: user.name, email: user.email }, 'secret');
-    user.tokens = user.token.concat({ token });
+    user.tokens = user.tokens.concat({ token });
     await user.save();
     return token;
 };

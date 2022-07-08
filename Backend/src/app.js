@@ -35,7 +35,7 @@ app.use(cors());
 app.use(morgan('dev'));
 
 app.use(index);
-app.use('api/v1', userRoutes);
+app.use('/api/v1', userRoutes);
 // incluir depois a chamada da rota 'user.routes.js'
 
 module.exports = app;
