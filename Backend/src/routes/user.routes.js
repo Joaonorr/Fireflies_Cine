@@ -21,6 +21,7 @@ router.post('/register', userController.registerNewUser);
 router.post('/login', userController.loginUser);
 
 // Rota responsável por retornar o perfil/profile do usuário 'User' (GET) localhost:8081/api/v1/userProfile
+// body {empty}
 router.get('/userProfile', auth, userController.returnUserProfile);
 
 
