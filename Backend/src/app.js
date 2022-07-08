@@ -2,24 +2,10 @@
 
 const express = require('express');
 const cors = require('cors');
-const mongoose = require('mongoose');
+const mongooseConnection = require('./config/mongooseConnection.config');
 const morgan = require('morgan');
 
 const app = express();
-
-// importar o db.config.js
-const database = require('./config/db.config'); // conexão local com o banco de dados
-
-mongoose.Promise = global.Promise;
-
-// conexão da base de dados
-mongoose.connect(database.local.localUrlDataBse).then(() => {
-    console.log('Database is connected');
-}).catch(err => {
-    console.log('Database connection error: ' + err);
-    process.exit();
-});
-
 
 // Rotas da API:
 const index = require('./routes/index');
@@ -31,6 +17,9 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(express.json({type: 'application/vnd.api+json'}));
 app.use(cors());
+
+app.set('mongoose connection', mongooseConnection);
+
 app.use(morgan('dev'));
 
 app.use(index);
