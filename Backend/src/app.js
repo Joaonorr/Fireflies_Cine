@@ -9,12 +9,11 @@ const app = express();
 
 // importar o db.config.js
 const database = require('./config/db.config'); // conexão local com o banco de dados
-console.log(database.local)
 
 mongoose.Promise = global.Promise;
 
 // conexão da base de dados
-mongoose.connect('mongodb://localhost:27017/jwtAuthDb').then(() => {
+mongoose.connect(database.local.localUrlDataBse).then(() => {
     console.log('Database is connected');
 }).catch(err => {
     console.log('Database connection error: ' + err);
