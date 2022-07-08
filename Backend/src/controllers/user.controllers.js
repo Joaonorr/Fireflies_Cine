@@ -1,6 +1,6 @@
 // Responsável pelo CRUD da classe User
 
-const User = require('../models/user.model');;
+const User = require('../models/user.model');
 
 // Async e await
 

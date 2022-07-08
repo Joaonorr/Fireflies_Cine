@@ -8,16 +8,13 @@ const morgan = require('morgan');
 const app = express();
 
 // importar o db.config.js
-const database = require('./config/db.config.js'); // conexão local com o banco de dados
+const database = require('./config/db.config'); // conexão local com o banco de dados
+console.log(database.local)
 
 mongoose.Promise = global.Promise;
 
 // conexão da base de dados
-mongoose.connect(database.local.localUrlDataBse, {
-    UserNewUrlParser: true,
-    useUnifieldTopology: true,
-    useCreateIndex: true,
-}).then(() => {
+mongoose.connect('mongodb://localhost:27017/jwtAuthDb').then(() => {
     console.log('Database is connected');
 }).catch(err => {
     console.log('Database connection error: ' + err);
