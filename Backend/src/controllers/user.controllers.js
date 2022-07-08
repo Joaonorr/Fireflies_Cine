@@ -25,6 +25,24 @@ exports.registerNewUser = async (req, res) => {
     }
 };
 
-exports.loginUser = async (req, res) => {};
+exports.loginUser = async (req, res) => {
+    try {
+        const email = req.body.email;
+        const password = req.body.password;
+    
+        const user = await User.findByCredentials(email, password);
+    
+        if (!user) {
+            return res.status(401).json({ error: 'Erro ao realizar o Login! Verifique as suas credenciais!'})
+        }
+    
+        const token = await user.generateAuthToken();
+        res.status(201).json({ message: 'Usuário logado com sucesso!', user, token});
+    
+    }
+    catch(err) {
+        res.status(400).json({err: err})
+    }
+};
 
 exports.returnUserProfile = async (req, res) => {};
