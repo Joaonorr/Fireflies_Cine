@@ -18,18 +18,14 @@ const userSchema = new Schema({
                 },
             },
         ],
-        tickets : [
-            {
-                movieId: {
-                    type: String,
-                    required: false
-                },
-                place: {
-                    type: Number,
-                    required: false
-                }
-            }
-        ]
+        sessionId: {
+            type: String,
+            required: false
+        },
+        place: {
+            type: Number,
+            required: false
+        } 
     },
     {
         timestamps: true,
