@@ -3,6 +3,12 @@ const routerMovie = express.Router();
 const movieController = require('../controllers/movie.controller');
 
 // Rota responsável por criar um novo filme 'Movie' (POST): localhost:8081/api/v1/CreateMovie
+// Body {
+//     name: String,
+//     description: String,
+//     img: String,
+//     runTime: Number
+// }
 routerMovie.post('/CreateNewMovie', movieController.CreateNewMovie);
 
 // Rota responsável por resgatar dados de todos os filmes 'Movies' (GET): localhost:8081/api/v1/GetAllMovies

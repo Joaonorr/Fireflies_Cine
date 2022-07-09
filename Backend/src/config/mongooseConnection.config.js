@@ -8,8 +8,8 @@ mongoose.Promise = global.Promise;
 
 // conexão da base de dados
 mongoose.connect(database.local.localUrlDataBse).then(() => {
-    console.log('Database is connected');
+    console.log('Banco de dados conectado com sucesso!');
 }).catch(err => {
-    console.log('Database connection error: ' + err);
+    console.log('Erro ao se conectar com o banco de dados: ' + err);
     process.exit();
 });

@@ -47,8 +47,8 @@ exports.GetMovieByName = async (req, res) => {
 exports.DeleteMovie = async (req, res) => {
     try {
         const movie = await Movie.find({ name: req.body.name });
-        if (movie.empty()) {
-            await Movie.find({ name: req.body.name }).remove();
+        if (movie.length > 0 ) {
+            await movie[0].remove();
             return res.status(200).json({message: "Filme apagado com sucesso!"});
         }
         return res.status(400).json({message: "Filme não encontrado"});
