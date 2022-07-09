@@ -7,10 +7,29 @@ const jwt = require('jsonwebtoken');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    name: { type: String, maxlength: 50, required: true },
-    email: { type: String, maxlength: 30, required: true },
-    password: { type: String, required: true },
-    tokens: [{token: { type: String, required: true },},],
+        name: { type: String, maxlength: 50, required: true },
+        email: { type: String, maxlength: 30, required: true },
+        password: { type: String, required: true },
+        tokens: [
+            {
+                token: { 
+                    type: String, 
+                    required: true 
+                },
+            },
+        ],
+        tickets : [
+            {
+                movieId: {
+                    type: String,
+                    required: false
+                },
+                place: {
+                    type: Number,
+                    required: false
+                }
+            }
+        ]
     },
     {
         timestamps: true,

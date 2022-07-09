@@ -31,16 +31,16 @@ exports.GetAllMovie = async (req, res) => {
 
 exports.GetMovieByName = async (req, res) => {
     try {
-        const isMovie = await Movie.find({ name: req.body.name });
-        console.log(isMovie[0].id)
-        if (isMovie.length >= 1) {
-             return res.status(200).json({isMovie});
+        const movie = await Movie.find({ name: req.body.name });
+        console.log(movie)
+        if (movie.length >= 1) {
+             return res.status(200).json({"movie": movie[0]});
         }
 
         return res.status(200).json({message: "Filme não encontrado!"})
     }
     catch(err) {
-        res.status(400).json({message: 'Erro ao pegar todos os filmes'});
+        res.status(400).json({message: 'Erro ao pegar o filme buscado!'});
     }
 };
 
