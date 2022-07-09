@@ -1,7 +1,7 @@
 // Responsável por fazer as rotas do User
 
 const express = require('express');
-const router = express.Router();
+const routerUser = express.Router();
 const auth = require('../middlewares/auth')
 const userController = require('../controllers/user.controllers');
 
@@ -11,18 +11,18 @@ const userController = require('../controllers/user.controllers');
 //     email: String,
 //     password: String
 // }
-router.post('/register', userController.registerNewUser);
+routerUser.post('/register', userController.registerNewUser);
 
 // Rota responsável pro realizar um novo login 'User': (POST) localhost:8081/api/v1/login
 // body {
 //     email: String,
 //     password: String
 // }
-router.post('/login', userController.loginUser);
+routerUser.post('/login', userController.loginUser);
 
 // Rota responsável por retornar o perfil/profile do usuário 'User' (GET) localhost:8081/api/v1/userProfile
 // body {empty}
-router.get('/userProfile', auth, userController.returnUserProfile);
+routerUser.get('/userProfile', auth, userController.returnUserProfile);
 
 
-module.exports = router;
+module.exports = routerUser;
