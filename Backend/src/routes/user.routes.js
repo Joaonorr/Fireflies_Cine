@@ -24,5 +24,11 @@ routerUser.post('/login', userController.loginUser);
 // body {empty}
 routerUser.get('/userProfile', auth, userController.returnUserProfile);
 
+// Rota responsável por retornar o perfil do usuário 'User' (POST) localhost:8081/api/v1/PostUserEdit
+// Body {
+//     id: String
+// }
+routerUser.post('/PostBuyTicket', userController.buyTicket)
+
 
 module.exports = routerUser;
