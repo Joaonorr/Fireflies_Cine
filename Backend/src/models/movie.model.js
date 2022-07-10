@@ -20,7 +20,7 @@ movieSchema.statics.findByMovie = async (name) => {
     const movie = await Movie.findOne({name});
     console.log(movie);
     if (!movie) {
-        throw new Error({error: 'unfunded Movie'})
+        throw new Error({error: 'Não foi possível achar o filme!'})
     }
     return movie;
 };

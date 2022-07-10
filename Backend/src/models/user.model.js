@@ -20,10 +20,12 @@ const userSchema = new Schema({
         ],
         sessionId: {
             type: String,
+            default: '',
             required: false
         },
         place: {
-            type: Number,
+            type: String,
+            default: '',
             required: false
         } 
     },
